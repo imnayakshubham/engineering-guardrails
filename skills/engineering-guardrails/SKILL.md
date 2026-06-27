@@ -12,9 +12,9 @@ description: >-
 
 ## Purpose
 
-This skill enforces engineering discipline, pattern preservation, minimalism, security, and context efficiency throughout the entire software development lifecycle.
+**The objective is not to write theoretically perfect code; the objective is to produce the smallest correct, secure, maintainable solution that preserves the existing codebase's deliberate engineering decisions.**
 
-This skill applies continuously:
+This skill enforces engineering discipline, pattern preservation, minimalism, security, and context efficiency throughout the entire software development lifecycle, and applies continuously:
 
 - Before implementation
 - During implementation
@@ -23,8 +23,6 @@ This skill applies continuously:
 - Before testing
 - Before completion
 - Before submission
-
-The goal is to produce the smallest correct, secure, maintainable, and production-ready solution while preserving the existing codebase's patterns and architecture.
 
 ## When NOT to use
 
@@ -38,24 +36,16 @@ Skip this skill for throwaway work where discipline isn't the point:
 
 ## Core Philosophy
 
-The existing codebase is the source of truth.
+Existing code is the primary source of truth. Preserve established patterns that are correct, secure, maintainable, and actively used; identify and avoid perpetuating legacy patterns, anti-patterns, and isolated implementation mistakes.
 
-The goal is **not** to produce:
+When goals conflict, resolve in this order:
 
-- the smartest solution
-- the most abstract solution
-- the most optimized solution
-- the most extensible solution
-- the most future-proof solution
-
-The goal **is** to produce:
-
-- the correct solution
-- the minimal solution
-- the secure solution
-- the maintainable solution
-- the consistent solution
-- the production-ready solution
+1. Correctness
+2. Security
+3. Existing-codebase consistency
+4. Simplicity
+5. Maintainability
+6. Optimization
 
 ---
 
@@ -80,6 +70,10 @@ Do not introduce:
 - new organizational patterns
 
 unless explicitly requested.
+
+Preserve proven patterns, not historical accidents. Reuse the good, consistent parts. When code you must touch or reuse has a genuine defect (a security flaw, a correctness bug, or a clear anti-pattern), do not silently copy it and do not silently rewrite it — flag it and ask whether to (a) match it for consistency, (b) fix it within the current scope, or (c) leave it and note a follow-up. Default to consistency for style; default to flagging for correctness and security. Never propagate a known security vulnerability for the sake of consistency.
+
+When multiple established patterns exist, prefer the one the codebase is converging on — typically the most recent, most widely adopted, and actively maintained.
 
 ### Rule 3 — Prefer the smallest correct solution
 
@@ -161,7 +155,7 @@ Testing:
 - integration-first testing
 ```
 
-Do not proceed until patterns are identified.
+Identify sufficient patterns to safely modify the requested code. Do not continue if critical patterns remain unclear.
 
 ---
 
@@ -242,7 +236,7 @@ Do not redesign systems, solve adjacent problems, fix unrelated issues, improve 
 
 The best solution is the smallest secure solution that follows the existing codebase.
 
-- Existing code is the source of truth.
+- Existing code is the primary source of truth; preserve proven patterns, not historical accidents.
 - Never assume.
 - Optimization requires evidence.
 - Abstraction requires repetition.
@@ -257,4 +251,4 @@ The best solution is the smallest secure solution that follows the existing code
 
 ## Detailed checklists
 
-Before completion, security review, and major decisions, consult **`references/checklists.md`** — it contains the full Security Validation taxonomy, Mid-Implementation Validation, Token/Context Budget rules, the 10-point Decision Framework, Failure Conditions, the Completion Validation checklist, and Success Criteria.
+Before completion, security review, and major decisions, consult **`references/checklists.md`** — it contains the Security Validation taxonomy, the Changes Requiring Explicit Approval list, the "Before You Change Code" and "Completion" checklists, Token/Context Efficiency rules, and Failure Conditions.

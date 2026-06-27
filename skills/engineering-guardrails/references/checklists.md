@@ -39,34 +39,16 @@ Do not perform these without explicit approval:
 
 ---
 
-## Anti-Bloat Validation
+## Before You Change Code
 
-Before every major decision ask:
+Ask before every significant change — if it adds anything unnecessary, simplify, remove, or ask for clarification:
 
-- Is this solving the requested problem only?
-- Is this introducing unnecessary files?
-- Is this introducing unnecessary layers?
-- Is this introducing unnecessary abstractions?
-- Is this introducing unnecessary configuration?
-- Is this introducing unnecessary dependencies?
-- Is this introducing unnecessary optimization?
-- Is this introducing unnecessary complexity?
-
-If yes: simplify, remove, or ask for clarification.
-
----
-
-## Mid-Implementation Validation
-
-After every major change verify:
-
-- requirements remain unchanged
-- scope has not expanded
-- existing patterns remain preserved
-- no overengineering was introduced
-- security assumptions remain valid
-- complexity remains justified
-- implementation remains minimal
+- Can this be solved with fewer lines, fewer files, or existing code?
+- Can this be solved without new abstraction, optimization, or configuration?
+- Am I solving today's problem only — not a speculative future one?
+- Am I preserving existing patterns and the smallest safe blast radius?
+- Does this add unnecessary files, layers, abstractions, dependencies, or complexity?
+- Is it secure? Is it production-ready?
 
 ---
 
@@ -91,25 +73,6 @@ When context grows: compress findings, summarize decisions, remove irrelevant co
 
 ---
 
-## Decision Framework
-
-Before every significant change ask:
-
-```text
-1.  Can this be solved with fewer lines?
-2.  Can this be solved with fewer files?
-3.  Can this be solved with existing code?
-4.  Can this be solved without abstraction?
-5.  Can this be solved without optimization?
-6.  Can this be solved without configuration?
-7.  Am I solving today's problem?
-8.  Am I preserving existing patterns?
-9.  Is this secure?
-10. Is this production ready?
-```
-
----
-
 ## Failure Conditions
 
 Stop immediately if:
@@ -127,48 +90,27 @@ Ask questions. Wait.
 
 ---
 
-## Completion Validation
+## Completion Checklist
 
-Before completion verify:
+Verify before declaring the change done.
 
-- ✓ requirements satisfied
-- ✓ existing design patterns preserved
-- ✓ existing engineering patterns preserved
-- ✓ existing architecture preserved
-- ✓ no assumptions introduced
-- ✓ no unnecessary abstractions introduced
-- ✓ no unnecessary optimization introduced
-- ✓ no unnecessary dependencies introduced
-- ✓ no unnecessary files modified
-- ✓ KISS satisfied
-- ✓ YAGNI satisfied
-- ✓ DRY satisfied
-- ✓ SOLID respected
-- ✓ security reviewed
-- ✓ production safety verified
-- ✓ tests pass
-- ✓ context usage remained efficient
-- ✓ implementation remains understandable
-- ✓ implementation remains maintainable
-- ✓ implementation remains minimal
+### Correctness & quality
 
----
+- requirements satisfied; behavior is correct, including edge cases
+- readable, maintainable, and testable; tests pass
+- error handling and API design are consistent with the codebase
+- dependency hygiene respected; production-ready
 
-## Success Criteria
+### Minimalism & consistency
 
-The implementation is successful when it is:
+- scope unchanged; no overengineering introduced
+- existing patterns and architecture preserved
+- KISS / YAGNI / DRY satisfied; SOLID respected
+- no unnecessary files, abstractions, dependencies, or complexity
+- smallest safe blast radius; any added complexity is justified
 
-- correct
-- minimal
-- secure
-- maintainable
-- consistent
-- production ready
-- easy to understand
-- easy to modify
-- difficult to misuse
-- free of unnecessary complexity
+### Security
 
-The best solution is the smallest secure solution that follows the existing codebase.
+- security reviewed; no known vulnerability introduced or propagated
 
-Optimization requires evidence. Abstraction requires repetition. Architecture changes require explicit approval.
+**Done means:** correct, minimal, secure, maintainable, consistent, production-ready, easy to understand, easy to modify, easy to test, and hard to misuse.
