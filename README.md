@@ -9,13 +9,13 @@ It works with any agent that supports the standard — **Claude Code, Cursor, Co
 Install with the open [`skills`](https://github.com/vercel-labs/skills) CLI:
 
 ```bash
-npx skills add <your-github-username>/<this-repo>
+npx skills add imnayakshubham/engineering-guardrails
 ```
 
 Add `-g` to install globally (for all your projects) instead of just the current one:
 
 ```bash
-npx skills add <your-github-username>/<this-repo> -g
+npx skills add imnayakshubham/engineering-guardrails -g
 ```
 
 The CLI auto-detects whichever agents you have installed and places the skill in the right folder for each (`.claude/skills/`, `.cursor/skills/`, `.codex/skills/`, …). The skill then loads automatically when the agent detects it's relevant — no extra configuration needed.
